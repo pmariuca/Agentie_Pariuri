@@ -26,5 +26,11 @@ namespace Agentie_Pariuri
                 lbCastiguri.Items.Add(b.ToString());
             }
         }
+
+        private void graficCastiguriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form11 form = new Form11(listaCastiguri);
+            form.ShowDialog();
+        }
     }
 }

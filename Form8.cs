@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,6 +57,12 @@ namespace Agentie_Pariuri
                     Bilet bilet = new Bilet(listaPers[IndexPers], data, pariuriAlese, suma);
 
                     listaC.Add(bilet);
+
+                    BinaryFormatter bf = new BinaryFormatter();
+                    FileStream fs = new FileStream("bilete.dat", FileMode.OpenOrCreate,
+                        FileAccess.Write);
+                    bf.Serialize(fs, listaC);
+                    fs.Close();
 
                     Form10 form = new Form10(bilet);
                     form.ShowDialog();

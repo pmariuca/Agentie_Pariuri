@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -50,6 +52,12 @@ namespace Agentie_Pariuri
 
                     Meci meci = new Meci(numeAcasa, numeDeplasare, data, goluriAcasa, goluriDeplasare, nrCornere, nrPenalty, cartonaseRosii, cartonaseGalbene);
                     lista.Add(meci);
+
+                    BinaryFormatter bf = new BinaryFormatter();
+                    FileStream fs = new FileStream("meciuri.dat", FileMode.OpenOrCreate,
+                        FileAccess.Write);
+                    bf.Serialize(fs, lista);
+                    fs.Close();
 
                 }
                 catch (Exception ex)

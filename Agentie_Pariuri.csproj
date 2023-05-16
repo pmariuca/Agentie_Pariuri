@@ -60,6 +60,12 @@
     <Compile Include="Form10.Designer.cs">
       <DependentUpon>Form10.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form11.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form11.Designer.cs">
+      <DependentUpon>Form11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     <EmbeddedResource Include="Form10.resx">
       <DependentUpon>Form10.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form11.resx">
+      <DependentUpon>Form11.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +180,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\7fe944ae68a19a24dae92d57e591b055.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\e7f845d5ec830f5e34adceeedebf736d.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ff6cee218b0fbbb046082285824941eb.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -210,7 +210,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(229, 42);
             this.button2.TabIndex = 14;
-            this.button2.Text = "Vizualizare persoana";
+            this.button2.Text = "Vizualizare persoane";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -235,8 +235,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Agentie_Pariuri.Properties.Resources.dd81a2c2c6c2e718557c23fc757ad428;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackgroundImage = global::Agentie_Pariuri.Properties.Resources.ff6cee218b0fbbb046082285824941eb;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(820, 447);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

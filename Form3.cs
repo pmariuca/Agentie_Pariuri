@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +20,8 @@ namespace Agentie_Pariuri
         {
             InitializeComponent();
             lista2 = listaMeciuri;
-            foreach(Meci meci in listaMeciuri)
+
+            foreach (Meci meci in lista2)
             {
                 listBoxMeciuri.Items.Add(meci.ToString());
             }
@@ -34,6 +37,29 @@ namespace Agentie_Pariuri
                 }
             }
             ((Form4)this.Owner).Index = index;
+        }
+
+        private void serializareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream("meciuri.dat", FileMode.OpenOrCreate,
+                FileAccess.Write);
+            bf.Serialize(fs, lista2);
+            fs.Close();
+            listBoxMeciuri.Items.Clear();
+        }
+
+        private void deserializareToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream("meciuri.dat", FileMode.Open,
+                FileAccess.Read);
+            List<Meci> listaNoua = (List<Meci>)bf.Deserialize(fs);
+            foreach (Meci meci in listaNoua)
+            {
+                listBoxMeciuri.Items.Add(meci.ToString());
+            }
+            fs.Close();
         }
     }
 }

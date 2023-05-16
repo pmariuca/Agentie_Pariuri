@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,6 +55,12 @@ namespace Agentie_Pariuri
 
                     Pariu pariu = new Pariu(tip, nr, listaM[Index]);
                     listaP.Add(pariu);
+
+                    BinaryFormatter bf = new BinaryFormatter();
+                    FileStream fs = new FileStream("pariuri.dat", FileMode.OpenOrCreate,
+                        FileAccess.Write);
+                    bf.Serialize(fs, listaP);
+                    fs.Close();
 
                 }
                 catch (Exception ex)

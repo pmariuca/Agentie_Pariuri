@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace Agentie_Pariuri
 {
-    public class Meci
+    [Serializable] public class Meci
     {
         string id;
         string echipaAcasa;
@@ -187,7 +187,7 @@ namespace Agentie_Pariuri
 
         public override string ToString()
         {
-            string detaliiMeci = "Id: " + id + ", meci: " + echipaAcasa + " - " + echipaDeplasare + ", data: " + data + ", goluri: " + goluriAcasa + ":" + goluriDeplasare + ", nr. cornere: " + nrCornere + "nr. penalty-uri: " + nrPenalty + ", nr. cartonase rosii: " + nrCartonaseRosii + ", nr. cartonase galbene: " + nrCartonaseGalbene + ", total goluri: " + totalGoluri;
+            string detaliiMeci = "Id: " + id + Environment.NewLine +" Echipe: " + echipaAcasa + " - " + echipaDeplasare + Environment.NewLine + " Data: " + data + Environment.NewLine + " Goluri: " + goluriAcasa + ":" + goluriDeplasare + Environment.NewLine + " Nr. cornere: " + nrCornere + Environment.NewLine + " Nr. penalty-uri: " + nrPenalty + Environment.NewLine +" Nr. cartonase rosii: " + nrCartonaseRosii + Environment.NewLine + " Nr. cartonase galbene: " + nrCartonaseGalbene + Environment.NewLine +" Total goluri: " + totalGoluri;
             return detaliiMeci;
         }
 

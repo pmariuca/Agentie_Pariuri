@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +21,41 @@ namespace Agentie_Pariuri
         public Form1()
         {
             InitializeComponent();
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream fs = new FileStream("meciuri.dat", FileMode.OpenOrCreate,
+                FileAccess.Read);
+            FileInfo fi = new FileInfo("meciuri.dat");
+            if(fi.Length > 0)
+            {
+                listaMeciuri = (List<Meci>)bf.Deserialize(fs);
+            }
+
+            BinaryFormatter bf1 = new BinaryFormatter();
+            FileStream fs1 = new FileStream("pariuri.dat", FileMode.OpenOrCreate,
+                FileAccess.Read);
+            FileInfo fi1 = new FileInfo("pariuri.dat");
+            if(fi1.Length > 0)
+            {
+                listaPariuri = (List<Pariu>)bf1.Deserialize(fs1);
+            }
+
+            BinaryFormatter bf2 = new BinaryFormatter();
+            FileStream fs2 = new FileStream("persoane.dat", FileMode.OpenOrCreate,
+                FileAccess.Read);
+            FileInfo fi2 = new FileInfo("persoane.dat");
+            if (fi2.Length > 0)
+            {
+                listaPersoana = (List<Persoana>)bf2.Deserialize(fs2);
+            }
+
+            BinaryFormatter bf3 = new BinaryFormatter();
+            FileStream fs3 = new FileStream("bilete.dat", FileMode.OpenOrCreate,
+                FileAccess.Read);
+            FileInfo fi3 = new FileInfo("bilete.dat");
+            if (fi3.Length > 0)
+            {
+                listaCastiguri = (List<Bilet>)bf3.Deserialize(fs3);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

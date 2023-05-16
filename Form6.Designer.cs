@@ -50,6 +50,7 @@
             this.lbPariuri.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPariuri.ForeColor = System.Drawing.Color.MediumVioletRed;
             this.lbPariuri.FormattingEnabled = true;
+            this.lbPariuri.HorizontalScrollbar = true;
             this.lbPariuri.ItemHeight = 22;
             this.lbPariuri.Location = new System.Drawing.Point(45, 72);
             this.lbPariuri.Name = "lbPariuri";
@@ -62,7 +63,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Agentie_Pariuri.Properties.Resources.dd81a2c2c6c2e718557c23fc757ad428;
+            this.BackgroundImage = global::Agentie_Pariuri.Properties.Resources.ff6cee218b0fbbb046082285824941eb;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lbPariuri);
             this.Controls.Add(this.label1);

@@ -5,7 +5,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -73,6 +75,12 @@ namespace Agentie_Pariuri
                     {
                         Persoana persoana = new Persoana(nume, prenume, telefon, email, data, suma);
                         listaPers.Add(persoana);
+
+                        BinaryFormatter bf = new BinaryFormatter();
+                        FileStream fs = new FileStream("persoane.dat", FileMode.OpenOrCreate,
+                            FileAccess.Write);
+                        bf.Serialize(fs, listaPers);
+                        fs.Close();
                     }
                     else
                     {

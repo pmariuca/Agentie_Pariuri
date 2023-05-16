@@ -40,7 +40,7 @@
             this.label1.ForeColor = System.Drawing.Color.MediumVioletRed;
             this.label1.Location = new System.Drawing.Point(307, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 39);
+            this.label1.Size = new System.Drawing.Size(80, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bilet";
             // 
@@ -50,6 +50,7 @@
             this.tbBilet.Location = new System.Drawing.Point(22, 56);
             this.tbBilet.Multiline = true;
             this.tbBilet.Name = "tbBilet";
+            this.tbBilet.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.tbBilet.Size = new System.Drawing.Size(744, 373);
             this.tbBilet.TabIndex = 1;
             // 
@@ -57,7 +58,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Agentie_Pariuri.Properties.Resources.dd81a2c2c6c2e718557c23fc757ad428;
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackgroundImage = global::Agentie_Pariuri.Properties.Resources.ff6cee218b0fbbb046082285824941eb;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tbBilet);
             this.Controls.Add(this.label1);

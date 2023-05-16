@@ -13,7 +13,7 @@ public enum TipPariu
 
 namespace Agentie_Pariuri
 {
-    public class Pariu
+    [Serializable] public class Pariu
     {
 
         TipPariu tip;
@@ -88,7 +88,7 @@ namespace Agentie_Pariuri
         }
         public override string ToString()
         {
-            string detaliiPariu = "Tip pariu: " + tip + "pariu: " + nrPariat + ", cota: " + cota + ", meci: " + meci;
+            string detaliiPariu = "Tip pariu: " + tip + Environment.NewLine + " Pariu: " + nrPariat + Environment.NewLine + " Cota: " + cota + Environment.NewLine + " Meci: " + meci;
             return detaliiPariu;
         }
     }

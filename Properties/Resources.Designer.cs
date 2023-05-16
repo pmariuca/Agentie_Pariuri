@@ -79,5 +79,25 @@ namespace Agentie_Pariuri.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap e7f845d5ec830f5e34adceeedebf736d {
+            get {
+                object obj = ResourceManager.GetObject("e7f845d5ec830f5e34adceeedebf736d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ff6cee218b0fbbb046082285824941eb {
+            get {
+                object obj = ResourceManager.GetObject("ff6cee218b0fbbb046082285824941eb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

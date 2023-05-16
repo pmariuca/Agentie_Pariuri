@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Agentie_Pariuri
 {
-    public class Bilet
+    [Serializable] public class Bilet
     {
         string id;
         Persoana persoana;
@@ -114,17 +114,17 @@ namespace Agentie_Pariuri
 
         public override string ToString()
         {
-            string detaliiBilet = "Id: " + id + ", persoana: " + persoana + ", data: " + data + ", pariuri: ";
+            string detaliiBilet = "Id: " + id + Environment.NewLine + " Persoana: " + persoana + Environment.NewLine + " Data: " + data + Environment.NewLine + " Pariuri: ";
             for( int i = 0; i < pariuri.Length; i++)
             {
                 detaliiBilet += pariuri[i] + ", ";
             }
-            detaliiBilet += "cote: ";
+            detaliiBilet += Environment.NewLine + " Cote: ";
             for (int i = 0; i < cote.Length; i++)
             {
                 detaliiBilet += cote[i] + ", ";
             }
-            detaliiBilet += "suma pariata: " + sumaPariata + ", castig posibil: " + castigPosibil;
+            detaliiBilet += Environment.NewLine + " Suma pariata: " + sumaPariata + Environment.NewLine + " Castig posibil: " + castigPosibil;
             return detaliiBilet;
         }
     }

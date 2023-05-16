@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Agentie_Pariuri
 {
-    public class Persoana
+    [Serializable] public class Persoana
     {
         string id;
         string nume;
@@ -169,7 +169,7 @@ namespace Agentie_Pariuri
 
         public override string ToString()
         {
-            string detaliiPersoana = "Id: " +  id + ", nume: " + nume + " " + prenume + ", telefon: " + telefon + ", email: " + email + ", data nasterii: " + dataNasterii + ", suma castigata: " + sumaCastigata;
+            string detaliiPersoana = "Id: " +  id + Environment.NewLine +" Nume: " + nume + " " + prenume + Environment.NewLine + " Telefon: " + telefon + Environment.NewLine + " Email: " + email + Environment.NewLine + " Data nasterii: " + dataNasterii + Environment.NewLine + " Suma castigata: " + sumaCastigata;
             return detaliiPersoana;
         }
     }
