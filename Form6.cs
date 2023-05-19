@@ -16,10 +16,12 @@ namespace Agentie_Pariuri
     {
         public List<int> indexList = new List<int>();
         List<Pariu> pariu = new List<Pariu>();
-        public Form6(List<Pariu> listaPariuri)
+        public bool isSelected;
+        public Form6(List<Pariu> listaPariuri, bool isSelected)
         {
             InitializeComponent();
             this.pariu=listaPariuri;
+            this.isSelected=isSelected;
 
             foreach (Pariu pariu in pariu)
             {
@@ -36,7 +38,10 @@ namespace Agentie_Pariuri
                     indexList.Add(i);
                 }
             }
-            ((Form8)this.Owner).Pariuri = indexList;
+            if(isSelected)
+            {
+                ((Form8)this.Owner).Pariuri = indexList;
+            }
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Agentie_Pariuri
             if (tbData.Text == "")
                 errorProvider1.SetError(tbData, "Introduceti data!");
             else
-                if (DateTime.TryParseExact(tbData.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dataCopie) == false)
+                if (DateTime.TryParseExact(tbData.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dataCopie) == false && dataCopie.Date <= DateTime.Today)
                 errorProvider1.SetError(tbData, "Introduceti o data valida!");
             else
                 if (numSumaPariata.Value <= 0)
@@ -84,14 +84,14 @@ namespace Agentie_Pariuri
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form9 form = new Form9(listaPers);
+            Form9 form = new Form9(listaPers, true);
             form.Owner = this;
             form.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form6 form = new Form6(listaP);
+            Form6 form = new Form6(listaP, true);
             form.Owner = this;
             form.ShowDialog();
         }

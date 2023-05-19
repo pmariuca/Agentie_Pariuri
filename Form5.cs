@@ -105,7 +105,7 @@ namespace Agentie_Pariuri
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form9 form = new Form9(listaPers);
+            Form9 form = new Form9(listaPers, false);
             form.ShowDialog();
         }
 

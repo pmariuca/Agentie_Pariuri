@@ -12,6 +12,12 @@ namespace Agentie_Pariuri
 {
     public partial class Form12 : Form
     {
+        public bool IsImageDropAllowed
+        {
+            get { return userControl11.IsImageDropAllowed; }
+            set { userControl11.SetImageDropAllowed(value); }
+        }
+
         public Form12()
         {
             InitializeComponent();

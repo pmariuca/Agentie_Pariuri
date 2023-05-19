@@ -29,6 +29,7 @@ namespace Agentie_Pariuri
             {
                 listaMeciuri = (List<Meci>)bf.Deserialize(fs);
             }
+            fs.Close();
 
             BinaryFormatter bf1 = new BinaryFormatter();
             FileStream fs1 = new FileStream("pariuri.dat", FileMode.OpenOrCreate,
@@ -38,6 +39,7 @@ namespace Agentie_Pariuri
             {
                 listaPariuri = (List<Pariu>)bf1.Deserialize(fs1);
             }
+            fs.Close();
 
             BinaryFormatter bf2 = new BinaryFormatter();
             FileStream fs2 = new FileStream("persoane.dat", FileMode.OpenOrCreate,
@@ -47,6 +49,7 @@ namespace Agentie_Pariuri
             {
                 listaPersoana = (List<Persoana>)bf2.Deserialize(fs2);
             }
+            fs.Close();
 
             BinaryFormatter bf3 = new BinaryFormatter();
             FileStream fs3 = new FileStream("bilete.dat", FileMode.OpenOrCreate,
@@ -56,6 +59,7 @@ namespace Agentie_Pariuri
             {
                 listaCastiguri = (List<Bilet>)bf3.Deserialize(fs3);
             }
+            fs.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,13 +82,13 @@ namespace Agentie_Pariuri
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form3 form = new Form3(listaMeciuri);
+            Form12 form = new Form12();
             form.ShowDialog();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Form6 form = new Form6(listaPariuri);
+            Form6 form = new Form6(listaPariuri, false);
             form.ShowDialog();
         }
 

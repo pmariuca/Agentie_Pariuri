@@ -17,48 +17,56 @@ namespace Agentie_Pariuri
         public List<Image> images;
         public PictureBox pictureBox;
         public int index;
+        public bool IsImageDropAllowed { get; private set; }
         public UserControl1()
         {
             InitializeComponent();
             DragEnter += UserControl1_DragEnter;
             DragDrop += UserControl1_DragDrop;
 
-            pictureBox = new PictureBox();
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            Controls.Add(pictureBox);
-
             images = new List<Image>();
             index = -1;
+            IsImageDropAllowed = false;
+        }
+
+        public void SetImageDropAllowed(bool allowed)
+        {
+            IsImageDropAllowed = allowed;
         }
 
         private void UserControl1_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (IsImageDropAllowed)
             {
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                if (IsImageFile(files[0]))
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 {
-                    string imagePath = files[0];
-                    Image image = Image.FromFile(imagePath);
-                    pictureBox.Image = image;
-                    pictureBox.Size = image.Size;
+                    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                    if (IsImageFile(files[0]))
+                    {
+                        string imagePath = files[0];
+                        Image image = Image.FromFile(imagePath);
+                        pictureBox1.Image = image;
 
-                    images.Add(image);
-                    index = images.Count - 1;
+                        images.Add(image);
+                        index = images.Count - 1;
 
+                    }
                 }
             }
         }
 
         private void UserControl1_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (IsImageDropAllowed)
             {
-                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-                if (IsImageFile(files[0]))
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 {
-                    e.Effect = DragDropEffects.Copy;
-                    return;
+                    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                    if (IsImageFile(files[0]))
+                    {
+                        e.Effect = DragDropEffects.Copy;
+                        return;
+                    }
                 }
             }
 
@@ -78,8 +86,7 @@ namespace Agentie_Pariuri
                 if (index < images.Count - 1)
                 {
                     index++;
-                    pictureBox.Image = images[index];
-                    pictureBox.Size = images[index].Size;
+                    pictureBox1.Image = images[index];
                 }
             }
         }
@@ -89,8 +96,7 @@ namespace Agentie_Pariuri
             if (index > 0)
             {
                 index--;
-                pictureBox.Image = images[index];
-                pictureBox.Size = images[index].Size;
+                pictureBox1.Image = images[index];
             }
         }
     }

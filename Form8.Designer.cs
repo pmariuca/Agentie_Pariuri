@@ -117,6 +117,11 @@
             this.numSumaPariata.BackColor = System.Drawing.Color.MistyRose;
             this.numSumaPariata.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numSumaPariata.Location = new System.Drawing.Point(195, 284);
+            this.numSumaPariata.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numSumaPariata.Name = "numSumaPariata";
             this.numSumaPariata.Size = new System.Drawing.Size(167, 22);
             this.numSumaPariata.TabIndex = 6;

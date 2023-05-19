@@ -81,7 +81,7 @@ namespace Agentie_Pariuri
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form3 form = new Form3(lista);
+            Form3 form = new Form3(lista, false);
             form.ShowDialog();
         }
     }

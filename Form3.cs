@@ -15,11 +15,13 @@ namespace Agentie_Pariuri
     public partial class Form3 : Form
     {
         public int index = -1;
+        public bool isSelected;
         List<Meci> lista2 = new List<Meci>();
-        public Form3(List<Meci> listaMeciuri)
+        public Form3(List<Meci> listaMeciuri, bool isSelected)
         {
             InitializeComponent();
             lista2 = listaMeciuri;
+            this.isSelected = isSelected;
 
             foreach (Meci meci in lista2)
             {
@@ -36,7 +38,10 @@ namespace Agentie_Pariuri
                     index = i;
                 }
             }
-            ((Form4)this.Owner).Index = index;
+            if(isSelected)
+            {
+                ((Form4)this.Owner).Index = index;
+            }
         }
 
         private void serializareToolStripMenuItem_Click(object sender, EventArgs e)

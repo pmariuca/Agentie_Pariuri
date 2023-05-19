@@ -13,11 +13,14 @@ namespace Agentie_Pariuri
     public partial class Form9 : Form
     {
         public int index = 0;
+        public bool isSelected;
         List<Persoana> persoana = new List<Persoana>();
-        public Form9(List<Persoana> listaPersoane)
+        public Form9(List<Persoana> listaPersoane, bool isSelected)
         {
             InitializeComponent();
             persoana = listaPersoane;
+            this.isSelected = isSelected;
+
             foreach (Persoana persoana in listaPersoane)
             {
                 lbPersoane.Items.Add(persoana);
@@ -33,7 +36,10 @@ namespace Agentie_Pariuri
                     index = i;
                 }
             }
-            ((Form8)this.Owner).IndexPers = index;
+            if(isSelected)
+            {
+                ((Form8)this.Owner).IndexPers = index;
+            }
         }
     }
 }

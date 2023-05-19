@@ -29,7 +29,10 @@ namespace Agentie_Pariuri
 
                 if(result == DialogResult.Yes)
                 {
+                    bool allowImageDrop = true;
+
                     Form12 form = new Form12();
+                    form.IsImageDropAllowed = allowImageDrop;
                     form.ShowDialog();
                 }
             }

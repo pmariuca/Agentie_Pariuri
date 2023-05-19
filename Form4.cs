@@ -37,7 +37,7 @@ namespace Agentie_Pariuri
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form3 form = new Form3(listaM);
+            Form3 form = new Form3(listaM, true);
             form.Owner = this;
             form.ShowDialog();
         }
@@ -77,7 +77,7 @@ namespace Agentie_Pariuri
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form6 form = new Form6(listaP);
+            Form6 form = new Form6(listaP, false);
             form.ShowDialog();
         }
     }
