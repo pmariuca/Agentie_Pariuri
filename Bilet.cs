@@ -18,7 +18,7 @@ namespace Agentie_Pariuri
             id = "Necunoscut";
             persoana = null;
             data = "Necunoscuta";
-            pariuri = null;
+            Pariuri = null;
             cote = null;
             sumaPariata = 0;
             castigPosibil = 0.0f;
@@ -43,7 +43,7 @@ namespace Agentie_Pariuri
                 this.data = new DateTime().ToString("dd/mm/yyyy");
             }
 
-            this.pariuri = pariuri;
+            this.Pariuri = pariuri;
             this.cote = new float[pariuri.Length];
             for(int i = 0; i < pariuri.Length; i++)
             {
@@ -102,6 +102,8 @@ namespace Agentie_Pariuri
             }
         }
 
+        public Pariu[] Pariuri { get => pariuri; set => pariuri = value; }
+
         public float calculareCastig(int sumaPariata, float[] cote)
         {
             float cotaFinala = 1.0f;
@@ -115,9 +117,9 @@ namespace Agentie_Pariuri
         public override string ToString()
         {
             string detaliiBilet = "Id: " + id + Environment.NewLine + " Persoana: " + persoana + Environment.NewLine + " Data: " + data + Environment.NewLine + " Pariuri: ";
-            for( int i = 0; i < pariuri.Length; i++)
+            for( int i = 0; i < Pariuri.Length; i++)
             {
-                detaliiBilet += pariuri[i] + ", ";
+                detaliiBilet += Pariuri[i] + ", ";
             }
             detaliiBilet += Environment.NewLine + " Cote: ";
             for (int i = 0; i < cote.Length; i++)

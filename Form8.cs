@@ -51,7 +51,7 @@ namespace Agentie_Pariuri
                     Pariu[] pariuriAlese = new Pariu[Pariuri.Count];
                     for (int i = 0; i < Pariuri.Count; i++)
                     {
-                        pariuriAlese[i] = listaP[i];
+                        pariuriAlese[i] = listaP[Pariuri[i]];
                     }
 
                     Bilet bilet = new Bilet(listaPers[IndexPers], data, pariuriAlese, suma);

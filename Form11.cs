@@ -57,11 +57,6 @@ namespace Agentie_Pariuri
                     br, recs[i].Location.X, recs[i].Location.Y - this.Font.Height);
             }
             gr.FillRectangles(br, recs);
-            for (int i = 0; i < nrElem - 1; i++)
-                gr.DrawLine(pen, new Point((int)(recs[i].Location.X + latime / 2),
-                    recs[i].Location.Y),
-                    new Point((int)(recs[i + 1].Location.X + latime / 2),
-                    recs[i + 1].Location.Y));
         }
 
         private void pd_print(object sender, PrintPageEventArgs e)
@@ -94,12 +89,6 @@ namespace Agentie_Pariuri
                 gr.DrawString(lista2[i].CastigPosibil.ToString(), this.Font,
                     br, recs[i].Location.X, recs[i].Location.Y - this.Font.Height);
             }
-            gr.FillRectangles(br, recs);
-            for (int i = 0; i < nrElem - 1; i++)
-                gr.DrawLine(pen, new Point((int)(recs[i].Location.X + latime / 2),
-                    recs[i].Location.Y),
-                    new Point((int)(recs[i + 1].Location.X + latime / 2),
-                    recs[i + 1].Location.Y));
         }
 
         private void printareToolStripMenuItem_Click(object sender, EventArgs e)

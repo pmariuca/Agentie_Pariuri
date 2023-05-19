@@ -28,7 +28,6 @@ namespace Agentie_Pariuri
             cota = 0;
             meci = null;
         }
-        //definim ca vector de string uri 
 
         public Pariu(string tip, string nrPariat, Meci meci)
         {
