@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -15,6 +16,7 @@ namespace Agentie_Pariuri
 {
     public partial class Form8 : Form
     {
+        private string connString;
         public int IndexPers { get; set; }
         public List<int> Pariuri { get; set; } 
 
@@ -27,6 +29,8 @@ namespace Agentie_Pariuri
             listaP = listaPariuri;
             listaPers = listaPersoane;
             listaC = listaCastiguri;
+
+            connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Path.Combine(Application.StartupPath, "database_pariuri.accdb");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -36,11 +40,14 @@ namespace Agentie_Pariuri
             if (tbData.Text == "")
                 errorProvider1.SetError(tbData, "Introduceti data!");
             else
-                if (DateTime.TryParseExact(tbData.Text, "dd/mm/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dataCopie) == false && dataCopie.Date <= DateTime.Today)
-                errorProvider1.SetError(tbData, "Introduceti o data valida!");
+                if (!DateTime.TryParseExact(tbData.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dataCopie))
+                    errorProvider1.SetError(tbData, "Introduceti o data valida!");
+            else 
+                if (dataCopie.Date < DateTime.Today.Date)
+                    errorProvider1.SetError(tbData, "Data trebuie sa fie mai mare sau egala cu data de azi!");
             else
                 if (numSumaPariata.Value <= 0)
-                errorProvider1.SetError(numSumaPariata, "Suma pariata trebuie sa fie pozitiva!");
+                    errorProvider1.SetError(numSumaPariata, "Suma pariata trebuie sa fie pozitiva!");
             else
             {
                 try
@@ -69,6 +76,38 @@ namespace Agentie_Pariuri
 
                     listaPers[IndexPers].ModificaSuma(suma);
 
+                    using (OleDbConnection connection = new OleDbConnection(connString))
+                    {
+                        connection.Open();
+
+                        using (OleDbCommand command = connection.CreateCommand())
+                        {
+                            command.CommandText = "INSERT INTO Bilete VALUES (?,?,?,?,?,?,?)";
+                            command.Parameters.Add("ID", OleDbType.Char).Value = bilet.Id;
+
+                            string persoana = listaPers[indexListaPers].Nume + " " + listaPers[indexListaPers].Prenume;
+                            command.Parameters.Add("persoana", OleDbType.Char).Value = persoana;
+                            command.Parameters.Add("data", OleDbType.Char).Value = data;
+
+                            string id_string = "";
+                            foreach (int id in Pariuri)
+                            {
+                                id_string += id.ToString() + " ";
+                            }
+                            command.Parameters.Add("idPariuri", OleDbType.Char).Value = id_string;
+
+                            string cote = "";
+                            foreach (Pariu pariu in pariuriAlese)
+                            {
+                                cote += pariu.Cota + " ";
+                            }
+                            command.Parameters.Add("cote", OleDbType.Char).Value = cote;
+                            command.Parameters.Add("sumaPariata", OleDbType.Integer).Value = suma;
+                            command.Parameters.Add("castigPosibil", OleDbType.Double).Value = bilet.CastigPosibil;
+
+                            command.ExecuteNonQuery();
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -94,6 +133,42 @@ namespace Agentie_Pariuri
             Form6 form = new Form6(listaP, true);
             form.Owner = this;
             form.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (OleDbConnection connection = new OleDbConnection(connString))
+            {
+                string numeTabel = "Bilete";
+                string query = $"SELECT * FROM {numeTabel}";
+
+                OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                string fileName = "Bilete.csv";
+                string downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
+                string filePath = Path.Combine(downloadsPath, fileName);
+                ExportToCsv(table, filePath);
+
+                MessageBox.Show($"Tabelul a fost descarcat in: {filePath}");
+            }
+        }
+
+        private void ExportToCsv(DataTable table, string filePath)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            IEnumerable<string> numeColoane = table.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
+            sb.AppendLine(string.Join(",", numeColoane));
+
+            foreach (DataRow row in table.Rows)
+            {
+                IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                sb.AppendLine(string.Join(",", fields));
+            }
+
+            File.WriteAllText(filePath, sb.ToString());
         }
     }
 }

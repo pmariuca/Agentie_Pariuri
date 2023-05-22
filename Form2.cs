@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
@@ -16,10 +17,12 @@ namespace Agentie_Pariuri
     public partial class Form2 : Form
     {
         public List<Meci> lista = new List<Meci>();
+        private string connString;
         public Form2(List<Meci> listaMeciuri)
         {
             InitializeComponent();
             lista = listaMeciuri;
+            connString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Path.Combine(Application.StartupPath, "database_pariuri.accdb");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -59,6 +62,29 @@ namespace Agentie_Pariuri
                     bf.Serialize(fs, lista);
                     fs.Close();
 
+                    using (OleDbConnection connection = new OleDbConnection(connString))
+                    {
+                        connection.Open();
+
+                        using (OleDbCommand command = connection.CreateCommand())
+                        {
+                                command.CommandText = "INSERT INTO Meciuri VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                                command.Parameters.Add("ID", OleDbType.Char).Value = meci.Id;
+                                command.Parameters.Add("echipaAcasa", OleDbType.Char).Value = meci.EchipaAcasa;
+                                command.Parameters.Add("echipaDeplasare", OleDbType.Char).Value = meci.EchipaDeplasare;
+                                command.Parameters.Add("data", OleDbType.Char).Value = meci.Data;
+                                command.Parameters.Add("goluriAcasa", OleDbType.Integer).Value = meci.GoluriAcasa;
+                                command.Parameters.Add("goluriDeplasare", OleDbType.Integer).Value = meci.GoluriDeplasare;
+                                command.Parameters.Add("nrCornere", OleDbType.Integer).Value = meci.NrCornere;
+                                command.Parameters.Add("nrPenalty", OleDbType.Integer).Value = meci.NrPenalty;
+                                command.Parameters.Add("nrCartonaseRosii", OleDbType.Integer).Value = meci.NrCartonaseRosii;
+                                command.Parameters.Add("nrCartonaseGalbene", OleDbType.Integer).Value = meci.NrCartonaseGalbene;
+                                command.Parameters.Add("goluri", OleDbType.Integer).Value = meci.TotalGoluri;
+
+                                command.ExecuteNonQuery();
+                        }
+                    }
+
                 }
                 catch (Exception ex)
                 {
@@ -83,6 +109,42 @@ namespace Agentie_Pariuri
         {
             Form3 form = new Form3(lista, false);
             form.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (OleDbConnection connection = new OleDbConnection(connString))
+            {
+                string numeTabel = "Meciuri";
+                string query = $"SELECT * FROM {numeTabel}";
+
+                OleDbDataAdapter adapter = new OleDbDataAdapter(query, connection);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                string fileName = "Meciuri.csv";
+                string downloadsPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Downloads";
+                string filePath = Path.Combine(downloadsPath, fileName);
+                ExportToCsv(table, filePath);
+
+                MessageBox.Show($"Tabelul a fost descarcat in: {filePath}");
+            }
+        }
+
+        private void ExportToCsv(DataTable table, string filePath)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            IEnumerable<string> numeColoane = table.Columns.Cast<DataColumn>().Select(column => column.ColumnName);
+            sb.AppendLine(string.Join(",", numeColoane));
+
+            foreach (DataRow row in table.Rows)
+            {
+                IEnumerable<string> fields = row.ItemArray.Select(field => field.ToString());
+                sb.AppendLine(string.Join(",", fields));
+            }
+
+            File.WriteAllText(filePath, sb.ToString());
         }
     }
 }

@@ -191,5 +191,11 @@ namespace Agentie_Pariuri
             return detaliiMeci;
         }
 
+        public string scrieMeci()
+        {
+            string detaliiMeci = "Id: " + id + Environment.NewLine + " Echipe: " + echipaAcasa + " - " + echipaDeplasare;
+            return detaliiMeci;
+        }
+
     }
 }

@@ -82,10 +82,10 @@
             this.button1.BackgroundImage = global::Agentie_Pariuri.Properties.Resources._7fe944ae68a19a24dae92d57e591b055;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.button1.Location = new System.Drawing.Point(140, 153);
+            this.button1.Location = new System.Drawing.Point(124, 153);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(289, 57);
+            this.button1.Size = new System.Drawing.Size(305, 57);
             this.button1.TabIndex = 3;
             this.button1.Text = "Adauga meci";
             this.button1.UseVisualStyleBackColor = false;
@@ -96,10 +96,10 @@
             this.button2.BackgroundImage = global::Agentie_Pariuri.Properties.Resources._7fe944ae68a19a24dae92d57e591b055;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.button2.Location = new System.Drawing.Point(140, 254);
+            this.button2.Location = new System.Drawing.Point(124, 254);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(289, 55);
+            this.button2.Size = new System.Drawing.Size(305, 55);
             this.button2.TabIndex = 4;
             this.button2.Text = "Adauga pariu";
             this.button2.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@
             this.button3.Location = new System.Drawing.Point(651, 252);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(289, 57);
+            this.button3.Size = new System.Drawing.Size(305, 57);
             this.button3.TabIndex = 5;
             this.button3.Text = "Clubul Pisicilor Salbatice";
             this.button3.UseVisualStyleBackColor = true;
@@ -141,9 +141,9 @@
             this.button5.Location = new System.Drawing.Point(651, 357);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(289, 57);
+            this.button5.Size = new System.Drawing.Size(305, 57);
             this.button5.TabIndex = 7;
-            this.button5.Text = "Vizualizeaza pariurile";
+            this.button5.Text = "Placintica tipurilor de pariu";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -152,10 +152,10 @@
             this.button6.BackgroundImage = global::Agentie_Pariuri.Properties.Resources._7fe944ae68a19a24dae92d57e591b055;
             this.button6.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.button6.Location = new System.Drawing.Point(140, 358);
+            this.button6.Location = new System.Drawing.Point(124, 357);
             this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(289, 55);
+            this.button6.Size = new System.Drawing.Size(305, 55);
             this.button6.TabIndex = 8;
             this.button6.Text = "Adauga bilet";
             this.button6.UseVisualStyleBackColor = true;
@@ -169,7 +169,7 @@
             this.button7.Location = new System.Drawing.Point(651, 153);
             this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(289, 57);
+            this.button7.Size = new System.Drawing.Size(305, 57);
             this.button7.TabIndex = 9;
             this.button7.Text = "Inregistrare persoana";
             this.button7.UseVisualStyleBackColor = true;

@@ -46,6 +46,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.button4 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numSumaCastigata)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -193,7 +195,7 @@
             this.button1.BackgroundImage = global::Agentie_Pariuri.Properties.Resources._7fe944ae68a19a24dae92d57e591b055;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.button1.Location = new System.Drawing.Point(536, 290);
+            this.button1.Location = new System.Drawing.Point(550, 114);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(229, 42);
             this.button1.TabIndex = 13;
@@ -206,7 +208,7 @@
             this.button2.BackgroundImage = global::Agentie_Pariuri.Properties.Resources._7fe944ae68a19a24dae92d57e591b055;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.button2.Location = new System.Drawing.Point(536, 338);
+            this.button2.Location = new System.Drawing.Point(550, 173);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(229, 42);
             this.button2.TabIndex = 14;
@@ -219,7 +221,7 @@
             this.button3.BackgroundImage = global::Agentie_Pariuri.Properties.Resources._7fe944ae68a19a24dae92d57e591b055;
             this.button3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.MediumVioletRed;
-            this.button3.Location = new System.Drawing.Point(536, 242);
+            this.button3.Location = new System.Drawing.Point(550, 60);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(229, 42);
             this.button3.TabIndex = 15;
@@ -231,6 +233,31 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::Agentie_Pariuri.Properties.Resources._7fe944ae68a19a24dae92d57e591b055;
+            this.button4.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.MediumVioletRed;
+            this.button4.Location = new System.Drawing.Point(550, 355);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(229, 42);
+            this.button4.TabIndex = 16;
+            this.button4.Text = "Download";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.MediumVioletRed;
+            this.label8.Location = new System.Drawing.Point(599, 335);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(171, 17);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Descarcati lista persoanelor";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,6 +265,8 @@
             this.BackgroundImage = global::Agentie_Pariuri.Properties.Resources.ff6cee218b0fbbb046082285824941eb;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(820, 447);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -282,5 +311,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button4;
     }
 }

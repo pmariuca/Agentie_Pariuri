@@ -172,5 +172,11 @@ namespace Agentie_Pariuri
             string detaliiPersoana = "Id: " +  id + Environment.NewLine +" Nume: " + nume + " " + prenume + Environment.NewLine + " Telefon: " + telefon + Environment.NewLine + " Email: " + email + Environment.NewLine + " Data nasterii: " + dataNasterii + Environment.NewLine + " Suma castigata: " + sumaCastigata;
             return detaliiPersoana;
         }
+
+        public string scriePersoana()
+        {
+            string detaliiPersoana= nume + " " + prenume;
+            return detaliiPersoana;
+        }
     }
 }

@@ -49,7 +49,7 @@ namespace Agentie_Pariuri
             {
                 TipPariu tip = pariu.Tip;
                 
-                if (tip == TipPariu.Necunoscut)
+                if (tip.ToString() == "Corner")
                     rezultat = false;
                 else if (tip == TipPariu.Corner)
                 {
@@ -57,25 +57,25 @@ namespace Agentie_Pariuri
                         rezultat = true;
                     else rezultat = false;
                 }
-                else if (tip == TipPariu.Penalty)
+                else if (tip.ToString() == "Penalty")
                 {
                     if (pariu.NrPariat == Convert.ToString(pariu.Meci.NrPenalty))
                         rezultat = true;
                     else rezultat = false;
                 }
-                else if (tip == TipPariu.ScorFinal)
+                else if (tip.ToString() == "ScorFinal")
                 {
                     if (pariu.NrPariat == Convert.ToString(pariu.Meci.calculeazaGoluri(pariu.Meci.GoluriAcasa, pariu.Meci.GoluriDeplasare)))
                         rezultat = true;
                     else rezultat = false;
                 }
-                else if (tip == TipPariu.NumarCartonaseRosii)
+                else if (tip.ToString() == "NumarCartonaseRosii")
                 {
                     if (pariu.NrPariat == Convert.ToString(pariu.Meci.NrCartonaseRosii))
                         rezultat = true;
                     else rezultat = false;
                 }
-                else if (tip == TipPariu.NumarCartonaseGalbene)
+                else if (tip.ToString() == "NumarCartonaseGalbene")
                 {
                     if (pariu.NrPariat == Convert.ToString(pariu.Meci.NrCartonaseGalbene))
                         rezultat = true;

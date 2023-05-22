@@ -37,9 +37,9 @@
             this.userControl11.AllowDrop = true;
             this.userControl11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("userControl11.BackgroundImage")));
             this.userControl11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.userControl11.Location = new System.Drawing.Point(40, 21);
+            this.userControl11.Location = new System.Drawing.Point(25, 12);
             this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(877, 531);
+            this.userControl11.Size = new System.Drawing.Size(1141, 706);
             this.userControl11.TabIndex = 0;
             // 
             // Form12
@@ -48,7 +48,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Agentie_Pariuri.Properties.Resources.ff6cee218b0fbbb046082285824941eb;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(959, 575);
+            this.ClientSize = new System.Drawing.Size(1189, 730);
             this.Controls.Add(this.userControl11);
             this.Name = "Form12";
             this.Text = "Form12";

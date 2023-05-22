@@ -87,7 +87,7 @@ namespace Agentie_Pariuri
         }
         public override string ToString()
         {
-            string detaliiPariu = "Tip pariu: " + tip + Environment.NewLine + " Pariu: " + nrPariat + Environment.NewLine + " Cota: " + cota + Environment.NewLine + " Meci: " + meci;
+            string detaliiPariu = Environment.NewLine+"Tip pariu: " + tip + Environment.NewLine + " Pariu: " + nrPariat + Environment.NewLine + " Cota: " + cota + Environment.NewLine + " Meci: " + meci.scrieMeci();
             return detaliiPariu;
         }
     }

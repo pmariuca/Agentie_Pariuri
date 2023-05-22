@@ -17,16 +17,22 @@ namespace Agentie_Pariuri
         public List<Image> images;
         public PictureBox pictureBox;
         public int index;
+        private string connString;
         public bool IsImageDropAllowed { get; private set; }
         public UserControl1()
         {
             InitializeComponent();
+            connString= @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Path.Combine(Application.StartupPath, "database_pariuri.accdb");
             DragEnter += UserControl1_DragEnter;
             DragDrop += UserControl1_DragDrop;
+
+            pictureBox1.SizeMode=PictureBoxSizeMode.AutoSize;
 
             images = new List<Image>();
             index = -1;
             IsImageDropAllowed = false;
+
+            LoadImagesFromDatabase();
         }
 
         public void SetImageDropAllowed(bool allowed)
@@ -34,7 +40,7 @@ namespace Agentie_Pariuri
             IsImageDropAllowed = allowed;
         }
 
-        private void UserControl1_DragDrop(object sender, DragEventArgs e)
+        private async void UserControl1_DragDrop(object sender, DragEventArgs e)
         {
             if (IsImageDropAllowed)
             {
@@ -50,6 +56,19 @@ namespace Agentie_Pariuri
                         images.Add(image);
                         index = images.Count - 1;
 
+                        SaveImageToDatabase(image);
+
+                        await Task.Delay(5000);
+
+                        DialogResult result = MessageBox.Show("Pentru ca ai adaugat o pisicuta poti participa la extragerile bonusurilor pisicesti! Vrei?", "Pisicile Salbatice", MessageBoxButtons.YesNo);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            Form16 form = new Form16();
+                            form.ShowDialog();
+                        }
+
+                        IsImageDropAllowed = false;
                     }
                 }
             }
@@ -79,23 +98,89 @@ namespace Agentie_Pariuri
             return extension == ".jpg" || extension == ".jpeg" || extension == ".png" || extension == ".gif";
         }
 
+        private void SaveImageToDatabase(Image image)
+        {
+            using (OleDbConnection connection = new OleDbConnection(connString))
+            {
+                connection.Open();
+
+                using (OleDbCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "INSERT INTO Images ([Image]) VALUES (?)";
+                    command.Parameters.AddWithValue("@Image", ImageToByteArray(image));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        private byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return stream.ToArray();
+            }
+        }
+
+        private Image ByteArrayToImage(byte[] byteArray)
+        {
+            using (MemoryStream stream = new MemoryStream(byteArray))
+            {
+                return Image.FromStream(stream);
+            }
+        }
+
+        private void LoadImagesFromDatabase()
+        {
+            using (OleDbConnection connection = new OleDbConnection(connString))
+            {
+                connection.Open();
+
+                using (OleDbCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT [Image] FROM Images";
+
+                    using (OleDbDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            byte[] imageData = (byte[])reader["Image"];
+                            Image image = ByteArrayToImage(imageData);
+                            images.Add(image);
+                        }
+                    }
+                }
+            }
+
+            if (images.Count > 0)
+            {
+                index = 0;
+                pictureBox1.Image = images[index];
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (images.Count > 0)
             {
-                if (index < images.Count - 1)
+                index++;
+                if (index >= images.Count)
                 {
-                    index++;
-                    pictureBox1.Image = images[index];
+                    index = 0;
                 }
+                pictureBox1.Image = images[index];
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (index > 0)
+            if (images.Count > 0)
             {
                 index--;
+                if (index < 0)
+                {
+                    index = images.Count - 1;
+                }
                 pictureBox1.Image = images[index];
             }
         }

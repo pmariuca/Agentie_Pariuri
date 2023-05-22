@@ -116,7 +116,7 @@ namespace Agentie_Pariuri
 
         public override string ToString()
         {
-            string detaliiBilet = "Id: " + id + Environment.NewLine + " Persoana: " + persoana + Environment.NewLine + " Data: " + data + Environment.NewLine + " Pariuri: ";
+            string detaliiBilet = "Id: " + id + Environment.NewLine + " Persoana: " + persoana.scriePersoana() + Environment.NewLine + " Data: " + data + Environment.NewLine + " Pariuri: ";
             for( int i = 0; i < Pariuri.Length; i++)
             {
                 detaliiBilet += Pariuri[i] + ", ";

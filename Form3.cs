@@ -25,7 +25,7 @@ namespace Agentie_Pariuri
 
             foreach (Meci meci in lista2)
             {
-                listBoxMeciuri.Items.Add(meci.ToString());
+                listBoxMeciuri.Items.Add(meci.scrieMeci());
             }
         }
 
