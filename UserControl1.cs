@@ -58,7 +58,7 @@ namespace Agentie_Pariuri
 
                         SaveImageToDatabase(image);
 
-                        await Task.Delay(5000);
+                        await Task.Delay(3500);
 
                         DialogResult result = MessageBox.Show("Pentru ca ai adaugat o pisicuta poti participa la extragerile bonusurilor pisicesti! Vrei?", "Pisicile Salbatice", MessageBoxButtons.YesNo);
 

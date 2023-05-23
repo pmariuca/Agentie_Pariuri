@@ -18,6 +18,8 @@ namespace Agentie_Pariuri
             InitializeComponent();
 
             tbBilet.Text = bilet.ToString();
+            tbBilet.Select(0, 0);
+
             this.bilet = bilet;
         }
 
